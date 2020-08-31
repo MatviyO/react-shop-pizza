@@ -1,8 +1,8 @@
 import logo from "./assets/img/pizza-logo.svg";
 import React from "react";
+import Button from "./Button";
 
-
-function Header() {
+export default function Header() {
     return (
         <div className="header">
             <div className="container">
@@ -15,6 +15,7 @@ function Header() {
                 </div>
                 <div className="header__cart">
                     <a href="/cart.html" className="button button--cart">
+                        <Button text="Text" />
                         <span>520 ₽</span>
                         <div className="button__delimiter"> </div>
                         <svg

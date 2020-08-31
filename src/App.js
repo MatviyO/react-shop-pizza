@@ -1,9 +1,10 @@
 import React from 'react';
-import logo from './assets/img/pizza-logo.svg'
 
+import Header from './Header'
 function App() {
   return (
       <div className="wrapper">
+          <Header />
           <div className="content">
               <div className="container">
                   <div className="content__top">
