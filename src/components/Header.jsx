@@ -1,4 +1,4 @@
-import logo from "./assets/img/pizza-logo.svg";
+import logo from "../assets/img/pizza-logo.svg";
 import React from "react";
 import Button from "./Button";
 
