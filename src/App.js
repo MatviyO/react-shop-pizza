@@ -8,7 +8,7 @@ function App() {
 
     useEffect(() => {
         fetch('http://localhost:3001/pizzas').then((res) => res.json()).then(data => {
-            setPizzas(data.pizzas);
+            setPizzas(data);
         })
     }, [])
 

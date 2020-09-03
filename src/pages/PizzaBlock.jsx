@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-function PizzaBlock({obj}) {
+function PizzaBlock({id, imageUrl, name, types, sizes, price, category, rating}) {
+
+    const [activeType, setActiveType] = useState(0);
     return (
         <div className="pizza-block">
             <img
@@ -8,11 +10,11 @@ function PizzaBlock({obj}) {
                 src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
                 alt="Pizza"
             />
-            <h4 className="pizza-block__title">Чизбургер-пицца</h4>
+            <h4 className="pizza-block__title">{name}</h4>
             <div className="pizza-block__selector">
                 <ul>
-                    <li className="active">тонкое</li>
-                    <li>традиционное</li>
+                    <li className={activeType === 0 ? 'active' : ''}>тонкое</li>
+                    <li className={activeType === 1 ? 'active' : ''}>традиционное</li>
                 </ul>
                 <ul>
                     <li className="active">26 см.
