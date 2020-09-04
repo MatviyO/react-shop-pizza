@@ -70,12 +70,12 @@ function PizzaBlock({id, imageUrl, name, types, sizes, price, category, rating})
 
 }
 
-PizzaBlock.PropTypes = {
+PizzaBlock.propTypes = {
    name: PropTypes.string,
     imageUrl: PropTypes.string,
     price: PropTypes.number,
-    types: PropTypes.stringOf(PropTypes.number),
-    sizes: PropTypes.stringOf([PropTypes.number])
+    types: PropTypes.arrayOf(PropTypes.number),
+    sizes: PropTypes.arrayOf(PropTypes.number)
 };
 PizzaBlock.defaultProps = {
     name: '',
