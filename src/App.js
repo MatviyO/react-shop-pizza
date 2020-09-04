@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import axios from 'axios';
 import {Header} from './components';
 import {Home, Cart} from "./pages";
 import {Route} from 'react-router-dom';
@@ -7,9 +8,8 @@ function App() {
     const [pizzas, setPizzas] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:3001/pizzas').then((res) => res.json()).then(data => {
-            setPizzas(data);
-        })
+        axios.get('http://localhost:3001/pizzas')
+            .then(({data}) => setPizzas(data))
     }, [])
 
   return (

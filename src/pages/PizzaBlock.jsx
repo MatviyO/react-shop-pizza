@@ -1,8 +1,22 @@
 import React, {useState} from 'react';
+import classsNames from 'classnames';
+import PropTypes from 'prop-types';
 
 function PizzaBlock({id, imageUrl, name, types, sizes, price, category, rating}) {
 
-    const [activeType, setActiveType] = useState(0);
+    const aviableTypes = ['тонкое','традиционное' ];
+    const aviableSize = [26, 30, 40 ];
+
+    const [activeType, setActiveType] = useState(types[0]);
+
+    const [activeSize, setActiveSize] = useState(types[0]);
+
+    const onSelectType = (index) => {
+        setActiveType(index)
+    }
+    const onSelectSize = (index) => {
+        setActiveSize(index)
+    }
     return (
         <div className="pizza-block">
             <img
@@ -13,14 +27,23 @@ function PizzaBlock({id, imageUrl, name, types, sizes, price, category, rating})
             <h4 className="pizza-block__title">{name}</h4>
             <div className="pizza-block__selector">
                 <ul>
-                    <li className={activeType === 0 ? 'active' : ''}>тонкое</li>
-                    <li className={activeType === 1 ? 'active' : ''}>традиционное</li>
+                    { aviableTypes.map((el, index) =>
+                        <li key={index} onClick={() => onSelectType(index)}
+                            className={classsNames({
+                                active: activeType === index,
+                                disabled: !types.includes(index)
+                            })}
+                        >{el}</li>)}
+
                 </ul>
                 <ul>
-                    <li className="active">26 см.
-                    </li>
-                    <li>30 см.</li>
-                    <li>40 см.</li>
+                    { aviableSize.map((el, index) =>
+                    <li key={index} onClick={() => onSelectSize(index)}
+                        className={classsNames({
+                            active: activeSize === index,
+                            disabled: !sizes.includes(el)
+                        })}
+                    >{el} см.</li>)}
                 </ul>
             </div>
             <div className="pizza-block__bottom">
@@ -47,4 +70,20 @@ function PizzaBlock({id, imageUrl, name, types, sizes, price, category, rating})
 
 }
 
+PizzaBlock.PropTypes = {
+   name: PropTypes.string,
+    imageUrl: PropTypes.string,
+    price: PropTypes.number,
+    types: PropTypes.stringOf(PropTypes.number),
+    sizes: PropTypes.stringOf([PropTypes.number])
+};
+PizzaBlock.defaultProps = {
+    name: '',
+    price: 0,
+    imageUrl: '',
+    types: [],
+    sizes: []
+};
+
 export default PizzaBlock;
+
