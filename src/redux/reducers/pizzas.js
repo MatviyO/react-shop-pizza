@@ -4,6 +4,7 @@ const initialState = {
 }
 
 const pizzasReducer = (state = initialState, action) => {
+    console.log(action.type)
     if  (action.type === 'SET_PIZZAS') {
         return {
             ...state,

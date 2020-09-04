@@ -5,12 +5,12 @@ import {connect} from 'react-redux';
 
 import {Header} from './components';
 import {Home, Cart} from "./pages";
-import {setPizzas} from "./redux/actions/pizzas";
+import {setPizzas as setPizzasAction} from "./redux/actions/pizzas";
 
 class App extends React.Component {
     componentDidMount() {
         axios.get('http://localhost:3001/pizzas')
-            .then(({data}) => store.dispatch(setPizzas(data)))
+            .then(({data}) => this.props.savePizzas(data))
     }
 
     render() {
@@ -18,14 +18,21 @@ class App extends React.Component {
             <div className="wrapper">
                 <Header />
                 <div className="content">
-                    <Route path="/" exact render={() => <Home items={[]} /> } />
+                    <Route path="/" exact render={() => <Home items={this.props.items} /> } />
                     <Route path="/cart" exact component={Cart} />
                 </div>
             </div>
         );
     }
 }
-const mapStateToProps = state => {
-
+const mapStateToProps = (state) => {
+    return {
+       items: state.pizzas.items
+    }
 }
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = (dispatch) => {
+   return {
+       savePizzas: (items) => dispatch(setPizzasAction(items))
+   }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(App);
