@@ -27,7 +27,8 @@ class App extends React.Component {
 }
 const mapStateToProps = (state) => {
     return {
-       items: state.pizzas.items
+       items: state.pizzas.items,
+        filters: state.filters
     }
 }
 const mapDispatchToProps = (dispatch) => {
