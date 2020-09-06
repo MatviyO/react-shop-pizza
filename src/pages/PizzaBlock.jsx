@@ -6,9 +6,7 @@ function PizzaBlock({id, imageUrl, name, types, sizes, price, category, rating})
 
     const aviableTypes = ['тонкое','традиционное' ];
     const aviableSize = [26, 30, 40 ];
-
     const [activeType, setActiveType] = useState(types[0]);
-
     const [activeSize, setActiveSize] = useState(types[0]);
 
     const onSelectType = (index) => {
@@ -21,7 +19,7 @@ function PizzaBlock({id, imageUrl, name, types, sizes, price, category, rating})
         <div className="pizza-block">
             <img
                 className="pizza-block__image"
-                src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
+                src={imageUrl}
                 alt="Pizza"
             />
             <h4 className="pizza-block__title">{name}</h4>
@@ -47,7 +45,7 @@ function PizzaBlock({id, imageUrl, name, types, sizes, price, category, rating})
                 </ul>
             </div>
             <div className="pizza-block__bottom">
-                <div className="pizza-block__price">от 395 ₽</div>
+                <div className="pizza-block__price">от {price} ₽</div>
                 <div className="button button--outline button--add">
                     <svg
                         width="12"
