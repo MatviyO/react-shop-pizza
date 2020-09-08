@@ -28,7 +28,6 @@ function Home() {
             <div className="content__top">
                 <Categories onClickItem={onSelectCategory}
                             items={categoryName} />
-
                 <SortPopup items={sortItems} />
             </div>
             <h2 className="content__title">Все пиццы</h2>
