@@ -13,6 +13,7 @@ function PizzaBlock({id, imageUrl, name, types, sizes, price, category, rating})
         setActiveType(index)
     }
     const onSelectSize = (index) => {
+    console.log(index)
         setActiveSize(index)
     }
     return (
