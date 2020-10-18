@@ -26,6 +26,8 @@ function Home() {
         }
     }, []);
 
+
+    
     const onSelectCategory = useCallback((index) => {
         dispatch(setCategory(index));
     }, []);
