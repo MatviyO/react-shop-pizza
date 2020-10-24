@@ -24,6 +24,7 @@ function Home() {
         if (items.length) {
             dispatch(fetchPizzas());
         }
+        
     }, []);
 
     const onSelectCategory = useCallback((index) => {
