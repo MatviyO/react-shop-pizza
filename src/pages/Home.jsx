@@ -24,7 +24,6 @@ function Home() {
         if (items.length) {
             dispatch(fetchPizzas());
         }
-        
     }, []);
 
     const onSelectCategory = useCallback((index) => {
@@ -41,11 +40,9 @@ function Home() {
             <h2 className="content__title">Все пиццы</h2>
             <div className="content__items">
                 {items && items.map(obj => <PizzaBlock key={obj.id} {...obj} />)}
-
             </div>
         </div>
     );
-
 }
 
 export default Home;
