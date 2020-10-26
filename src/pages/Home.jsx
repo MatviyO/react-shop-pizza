@@ -1,6 +1,6 @@
 import React, {useCallback, useEffect} from 'react';
 import {Categories, SortPopup} from "../components";
-import PizzaBlock from "./PizzaBlock";
+import Index from "../components/PizzaBlock";
 import {useDispatch, useSelector} from "react-redux";
 import {setCategory} from "../redux/actions/filters";
 import {fetchPizzas} from "../redux/actions/pizzas";
@@ -39,7 +39,7 @@ function Home() {
             </div>
             <h2 className="content__title">Все пиццы</h2>
             <div className="content__items">
-                {items && items.map(obj => <PizzaBlock key={obj.id} {...obj} />)}
+                {items && items.map(obj => <Index key={obj.id} {...obj} />)}
             </div>
         </div>
     );
