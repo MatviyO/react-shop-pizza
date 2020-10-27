@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export const fetchPizzas = () => (dispatch) => {
+    dispatch(setLoaded(false));
     axios.get('http://localhost:3001/pizzas')
         .then(({data}) => {
             dispatch(setPizzas(data));
@@ -8,9 +9,12 @@ export const fetchPizzas = () => (dispatch) => {
 }
 
 export const setPizzas = (items) => ({
-    type: 'SET_PIZZAS',
+    type: 'SET_LOADED',
     payload: items
 });
 
-
+export const setLoaded = value => ({
+    type: 'SET_LOADING',
+    payload: value
+})
 

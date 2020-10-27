@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect} from 'react';
-import {Categories, SortPopup} from "../components";
+import {Categories, SortPopup, PizzaLoadingBlock} from "../components";
 import Index from "../components/PizzaBlock";
 import {useDispatch, useSelector} from "react-redux";
 import {setCategory} from "../redux/actions/filters";
@@ -19,12 +19,15 @@ const sortItems = [
 function Home() {
     const dispatch = useDispatch();
     const items = useSelector(({pizzas}) => pizzas.items);
+    const isLoaded = useSelector(({pizzas}) => pizzas.isLoaded);
+    const { category, sortBy} = useSelector(({filters}) => filters);
+
 
     useEffect(() => {
         if (items.length) {
             dispatch(fetchPizzas());
         }
-    }, []);
+    }, [category]);
 
     const onSelectCategory = useCallback((index) => {
         dispatch(setCategory(index));
@@ -33,13 +36,14 @@ function Home() {
     return (
         <div className="container">
             <div className="content__top">
-                <Categories onClickItem={onSelectCategory}
+                <Categories activeCategory={category} onClickItem={onSelectCategory}
                             items={categoryName}/>
                 <SortPopup items={sortItems}/>
             </div>
             <h2 className="content__title">Все пиццы</h2>
             <div className="content__items">
-                {items && items.map(obj => <Index key={obj.id} {...obj} />)}
+                {isLoaded ? items.map(obj => <Index key={obj.id} isLoading={true} {...obj} />)
+                : Array(10).fill(0).map((_, index) => <PizzaLoadingBlock key={index} />)}
             </div>
         </div>
     );
