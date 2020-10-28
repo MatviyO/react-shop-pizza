@@ -2,7 +2,7 @@ import React, {useCallback, useEffect} from 'react';
 import {Categories, SortPopup, PizzaLoadingBlock} from "../components";
 import Index from "../components/PizzaBlock";
 import {useDispatch, useSelector} from "react-redux";
-import {setCategory} from "../redux/actions/filters";
+import {setCategory, setSortBy} from "../redux/actions/filters";
 import {fetchPizzas} from "../redux/actions/pizzas";
 
 const categoryName = ['Мясные',
@@ -33,12 +33,15 @@ function Home() {
         dispatch(setCategory(index));
     }, []);
 
+    const onSelectSortType = useCallback((type) => {
+        dispatch(setSortBy(type));
+    }, []);
     return (
         <div className="container">
             <div className="content__top">
                 <Categories activeCategory={category} onClickCategory={onSelectCategory}
                             items={categoryName}/>
-                <SortPopup items={sortItems}/>
+                <SortPopup activeSortType={sortBy} items={sortItems} onClickSortType={onSelectSortType}/>
             </div>
             <h2 className="content__title">Все пиццы</h2>
             <div className="content__items">
