@@ -47,7 +47,7 @@ const SortPopup = memo(function SortPopup({items, activeSortType, onClickSortTyp
                     {items && items.map((obj,index) => (
                         <li
                             className={activeSortType === obj.type ? 'active' : ''}
-                            onClick={() => onSelectedItem(obj.type)}
+                            onClick={() => onSelectedItem(obj)}
                             key={index}
                         >
                             {obj.name}

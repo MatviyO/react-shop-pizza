@@ -12,22 +12,20 @@ const categoryName = ['Мясные',
     'Закрытые'
 ];
 const sortItems = [
-    {name: 'популярности', type: 'popular'},
-    {name: 'цене', type: 'price'},
-    {name: 'алфавиту', type: 'title'}]
+    {name: 'популярности', type: 'popular', order: 'desc'},
+    {name: 'цене', type: 'price', order: 'desc'},
+    {name: 'алфавиту', type: 'name', order: 'asc'}]
 
 function Home() {
     const dispatch = useDispatch();
     const items = useSelector(({pizzas}) => pizzas.items);
     const isLoaded = useSelector(({pizzas}) => pizzas.isLoaded);
-    const { category, sortBy} = useSelector(({filters}) => filters);
-
+    const {category, sortBy} = useSelector(({filters}) => filters);
 
     useEffect(() => {
-        // if (items.length) {
-            dispatch(fetchPizzas());
-        // }
-    }, [category]);
+        dispatch(fetchPizzas(sortBy, category));
+
+    }, [category, sortBy]);
 
     const onSelectCategory = useCallback((index) => {
         dispatch(setCategory(index));
@@ -41,12 +39,12 @@ function Home() {
             <div className="content__top">
                 <Categories activeCategory={category} onClickCategory={onSelectCategory}
                             items={categoryName}/>
-                <SortPopup activeSortType={sortBy} items={sortItems} onClickSortType={onSelectSortType}/>
+                <SortPopup activeSortType={sortBy.type} items={sortItems} onClickSortType={onSelectSortType}/>
             </div>
             <h2 className="content__title">Все пиццы</h2>
             <div className="content__items">
-                {/*{isLoaded ? items.map(obj => <Index key={obj.id} isLoading={true} {...obj} />)*/}
-                {/*: Array(10).fill(0).map((_, index) => <PizzaLoadingBlock key={index} />)}*/}
+                {/*{isLoaded ? items.map((obj) => <Index key={obj.id} isLoading={true} {...obj} />)*/}
+                {/*: Array(12).fill(0).map((_, index) => <PizzaLoadingBlock key={index} />)}*/}
                 {
                     items.map(obj => <Index key={obj.id} isLoading={true} {...obj} />)
                 }

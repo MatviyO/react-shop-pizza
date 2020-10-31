@@ -2,6 +2,7 @@ const initialState = {
     items: [],
     isLoaded: false
 }
+console.log(initialState.items)
 
 const pizzasReducer = (state = initialState, action) => {
     switch (action.type) {
