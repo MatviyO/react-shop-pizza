@@ -14,7 +14,7 @@ const categoryName = ['Мясные',
 const sortItems = [
     {name: 'популярности', type: 'popular'},
     {name: 'цене', type: 'price'},
-    {name: 'алфавиту', type: 'alphabet'}]
+    {name: 'алфавиту', type: 'title'}]
 
 function Home() {
     const dispatch = useDispatch();
@@ -24,9 +24,9 @@ function Home() {
 
 
     useEffect(() => {
-        if (items.length) {
+        // if (items.length) {
             dispatch(fetchPizzas());
-        }
+        // }
     }, [category]);
 
     const onSelectCategory = useCallback((index) => {
@@ -45,8 +45,11 @@ function Home() {
             </div>
             <h2 className="content__title">Все пиццы</h2>
             <div className="content__items">
-                {isLoaded ? items.map(obj => <Index key={obj.id} isLoading={true} {...obj} />)
-                : Array(10).fill(0).map((_, index) => <PizzaLoadingBlock key={index} />)}
+                {/*{isLoaded ? items.map(obj => <Index key={obj.id} isLoading={true} {...obj} />)*/}
+                {/*: Array(10).fill(0).map((_, index) => <PizzaLoadingBlock key={index} />)}*/}
+                {
+                    items.map(obj => <Index key={obj.id} isLoading={true} {...obj} />)
+                }
             </div>
         </div>
     );
