@@ -1,17 +1,14 @@
 import React, {useState} from 'react';
 import classsNames from 'classnames';
 import PropTypes from 'prop-types';
-import PizzaLoadingBlock from "./LoadingPizza";
 
 function Index({ id, imageUrl, name, types, sizes, price, category, rating, isLoading}) {
     const aviableTypes = ['тонкое', 'традиционное'];
     const aviableSize = [26, 30, 40];
     const [activeType, setActiveType] = useState(types[0]);
-    const [activeSize, setActiveSize] = useState(types[0]);
+    const [activeSize, setActiveSize] = useState(sizes[0]);
 
-    if (isLoading) {
-        return <PizzaLoadingBlock />
-    }
+
     const onSelectType = (index) => {
         setActiveType(index)
     }
