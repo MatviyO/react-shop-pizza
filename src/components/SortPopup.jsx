@@ -9,7 +9,8 @@ const SortPopup = memo(function SortPopup({items, activeSortType, onClickSortTyp
     const toggleVisiblePopup = () => {
         setVisiblePopup(!visiblePopup);
     }
-    const handleOutSideClick = (e) => {
+    const handleOutSideClick = (event) => {
+        const path = event.path || (event.composedPath && event.composedPath());
         if (!e.path.includes(sortRef.current)) {
             setVisiblePopup(false);
         }
