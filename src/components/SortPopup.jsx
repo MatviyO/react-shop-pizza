@@ -15,7 +15,6 @@ const SortPopup = memo(function SortPopup({items, activeSortType, onClickSortTyp
             setVisiblePopup(false);
         }
     }
-    
     useEffect(() => {
         document.body.addEventListener('click', handleOutSideClick)
     }, [])
