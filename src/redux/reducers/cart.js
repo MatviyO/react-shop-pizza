@@ -7,15 +7,10 @@ const initialState = {
 
 const cartReducer = (state = initialState, action) => {
     switch (action.type) {
-        case 'SET_TOTAL_PRICE':
+        case 'ADD_PIZZA_CART':
             return {
                 ...state,
                totalPrice: action.payload
-            }
-        case 'SET_TOTAL_COUNT':
-            return {
-                ...state,
-                totalPrice: action.payload
             }
         default:
             return state;
