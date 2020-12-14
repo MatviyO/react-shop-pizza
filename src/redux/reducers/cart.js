@@ -12,7 +12,7 @@ const cartReducer = (state = initialState, action) => {
                 ...state,
                items: {
                     [action.payload.id]: [
-                        ...state.items,
+                        ...state.items[action.ayload.id],
                         action.payload
                     ]
                }
