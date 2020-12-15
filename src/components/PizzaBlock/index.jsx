@@ -3,7 +3,7 @@ import classsNames from 'classnames';
 import PropTypes from 'prop-types';
 import Button from "../Button";
 
-function Index({ id, imageUrl, name, types, sizes, price, category, rating, isLoading}) {
+function Index({ id, imageUrl, name, types, sizes, price, category, rating, isLoading, onAddPizza }) {
     const aviableTypes = ['тонкое', 'традиционное'];
     const aviableSize = [26, 30, 40];
     const [activeType, setActiveType] = useState(types[0]);
@@ -47,7 +47,9 @@ function Index({ id, imageUrl, name, types, sizes, price, category, rating, isLo
             </div>
             <div className="pizza-block__bottom">
                 <div className="pizza-block__price">от {price} ₽</div>
-                <Button>
+                <Button
+                    onClick={}
+                    className="button--add" outline disabled>
                     <svg
                         width="12"
                         height="12"
@@ -74,7 +76,8 @@ Index.propTypes = {
     imageUrl: PropTypes.string,
     price: PropTypes.number,
     types: PropTypes.arrayOf(PropTypes.number),
-    sizes: PropTypes.arrayOf(PropTypes.number)
+    sizes: PropTypes.arrayOf(PropTypes.number),
+    onAddPizza: PropTypes.func
 };
 Index.defaultProps = {
     name: '',
