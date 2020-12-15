@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import classsNames from 'classnames';
 import PropTypes from 'prop-types';
+import Button from "../Button";
 
 function Index({ id, imageUrl, name, types, sizes, price, category, rating, isLoading}) {
     const aviableTypes = ['тонкое', 'традиционное'];
@@ -46,7 +47,7 @@ function Index({ id, imageUrl, name, types, sizes, price, category, rating, isLo
             </div>
             <div className="pizza-block__bottom">
                 <div className="pizza-block__price">от {price} ₽</div>
-                <div className="button button--outline button--add">
+                <Button>
                     <svg
                         width="12"
                         height="12"
@@ -61,7 +62,7 @@ function Index({ id, imageUrl, name, types, sizes, price, category, rating, isLo
                     </svg>
                     <span>Добавить</span>
                     <i>2</i>
-                </div>
+                </Button>
             </div>
         </div>
     );
