@@ -18,7 +18,7 @@ function Index({ id, imageUrl, name, types, sizes, price, onClickAddPizza }) {
     }
     const handleAddPizza = () => {
         const obj = {
-            id, name, imageUrl, price, sizes: activeSize, type: activeType
+            id, name, imageUrl, price, sizes: aviableSize[activeSize], type: aviableTypes[activeType]
         }
         onClickAddPizza(obj)
     }
