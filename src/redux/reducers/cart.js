@@ -1,4 +1,3 @@
-
 const initialState = {
     items: {},
     totalPrice: 0,
@@ -8,15 +7,20 @@ const initialState = {
 const cartReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'ADD_PIZZA_CART':
+            const newItems = {
+                ...state.items,
+                [action.payload.id]: !state.items[action.payload.id]
+                    ? []
+                    : [...state.items[action.payload.id], action.payload
+                    ]
+
+            }
             return {
                 ...state,
-               items: {
-                    [action.payload.id]: [
-                        ...state.items[action.ayload.id],
-                        action.payload
-                    ]
-               }
+                items: newItems,
+                totalCount: Object.keys(newItems).length
             }
+
         default:
             return state;
 
