@@ -14,6 +14,8 @@ const cartReducer = (state = initialState, action) => {
                     : [...state.items[action.payload.id], action.payload
                     ]
 
+                
+
             }
             return {
                 ...state,
