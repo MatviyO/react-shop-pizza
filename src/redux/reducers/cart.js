@@ -15,8 +15,8 @@ const cartReducer = (state = initialState, action) => {
                     ]
 
             }
-            const allPizas = [].concat.apply([], Object.values(newItems));
-            const tottalPricce = allPizas.reduce((sum, obj) => pbj.price + sum, 0)
+            const allPizas = Object.values(newItems).flat();
+            const tottalPricce = allPizas.reduce((sum, obj) => obj.price + sum, 0)
 
             return {
                 ...state,

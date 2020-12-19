@@ -11,7 +11,7 @@ export const  fetchPizzas =  (sortBy, category) => async (dispatch) => {
         type: 'SET_LOADED',
         payload: false
     });
-    await axios.get(`http://localhost:3001/pizzas?${category !== null ? `category=${category}` : ''}
+    await axios.get(`/pizzas?${category !== null ? `category=${category}` : ''}
     &_sort=${sortBy.type}&_order=desc`)
         .then(({data}) => {
             console.log(data)
