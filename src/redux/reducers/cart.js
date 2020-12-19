@@ -15,10 +15,14 @@ const cartReducer = (state = initialState, action) => {
                     ]
 
             }
+            const allPizas = [].concat.apply([], Object.values(newItems));
+            const tottalPricce = allPizas.reduce((sum, obj) => pbj.price + sum, 0)
+
             return {
                 ...state,
                 items: newItems,
-                totalCount: Object.keys(newItems).length
+                totalCount: allPizas.length,
+                tottalPricce
             }
 
         default:
