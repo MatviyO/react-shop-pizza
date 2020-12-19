@@ -1,4 +1,4 @@
-const CartItem = () => {
+const CartItem = ({name, type,size}) => {
 
     return (
         <div className="cart__item">
