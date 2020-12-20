@@ -5,6 +5,10 @@ import {useSelector} from "react-redux";
 function Cart() {
     const {items, totalPrice, totalCount} = useSelector(({cart}) => cart)
 
+    const addedPizzas = Object.keys(items).map(key => {
+        return items[key][0]
+    });
+
     return (
         <div className="container container--cart">
             {totalCount ? (
