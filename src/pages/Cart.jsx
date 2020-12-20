@@ -1,7 +1,9 @@
 import React from 'react';
 import CartItem from "../components/CartItem";
+import {useSelector} from "react-redux";
 
 function Cart() {
+    const {items, totalPrice, totalCount} = useSelector(({cart}) => cart)
 
     return (
         <div className="container container--cart">
