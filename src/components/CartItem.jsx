@@ -1,4 +1,6 @@
-const CartItem = ({name, type,size}) => {
+import Button from "./Button";
+
+const CartItem = ({name, type,size, totalPrice, totalCount}) => {
 
     return (
         <div className="cart__item">
